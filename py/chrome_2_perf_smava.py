@@ -8,7 +8,9 @@ from timingsclient import Perf
 
 BROWSER = webdriver.Chrome(
     '/usr/local/bin/chromedriver')
-BROWSER.get('http://www.seleniumconf.de')
+#BROWSER.get('https://www.smava.de/kreditanfrage/kreditantrag.html?route=V1')
+#BROWSER.get('https://www.smava.de/landing/kfzrechner')
+BROWSER.get('https://www.smava.de/landing/kfzrechner?embed&placementId=1847502766&ref=9875f8f0&amount=52490&category=1&channel=desktop&data1=4&duration=84&initialPayment=0&subaffiliateid=4&vehicleBrand=Audi&vehicleKm=9625&vehicleModel=A4&vehiclePowerKw=200&vehiclePrice=52490&vehicleRegistrationYear=2016')
 
 try:
     BROWSER.find_element_by_class_name('section__heading')
@@ -19,7 +21,7 @@ except:
 # Setup custom config for PERF
 CONFIG_FILE = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
-    '', 'config.yaml')
+    '', 'config_smava.yaml')
 PERF = Perf(CONFIG_FILE)
 INJECT_CODE = PERF.injectjs('navtiming')
 API_PARAMS = PERF.getapiparams(es_create=True, log={

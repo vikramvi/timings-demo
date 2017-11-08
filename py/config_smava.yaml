@@ -1,7 +1,7 @@
 PERF_API_URL: "http://localhost/v2/api/cicd/"
 api_params: 
  sla: 
-  pageLoadTime: 4000
+  pageLoadTime: 2000
  baseline: 
   days: 7
   perc: 75
@@ -13,8 +13,8 @@ api_params:
   esCreate: true
   passOnFailedAssert: false
  log: 
-  test_info: "Demo SeleniumConf17"
+  test_info: "Demo Smava"
   env_tester: "Windows"
   browser: "Demo browser"
   env_target: "PROD"
-  team: "SELENIUM TEAM"
+  team: "Smava Integration Page"

@@ -1,0 +1,24 @@
+# --------------------
+# https://github.com/godaddy/timings/blob/master/README.md#common-parameters-navtiming-usertiming-and-apitiming
+# --------------------
+PERF_API_URL: "http://localhost/v2/api/cicd/"
+api_params: 
+ sla: 
+  pageLoadTime: 300
+  #visualCompleteTime: 3000
+ baseline: 
+  days: 30
+  perc: 50
+  padding: 1.2
+ flags: 
+  assertBaseline: true
+  debug: false
+  esTrace: false
+  esCreate: true
+  passOnFailedAssert: false
+ log: 
+  test_info: "Demo Check24"
+  env_tester: "Ubuntu_Prod"
+  browser: "Chrome"
+  env_target: "PROD"
+  team: "smava-kreditvergleich-responsive"
