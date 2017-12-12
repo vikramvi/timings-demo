@@ -3,6 +3,12 @@ import platform
 from selenium import webdriver
 from timingsclient import Perf
 
+#Jenkins Chrome Browser Fix
+#from pyvirtualdisplay import Display
+#display = Display(visible=0, size=(800, 800))  
+#display.start()
+#BROWSER = webdriver.Chrome()
+
 BROWSER = webdriver.Chrome('/usr/local/bin/chromedriver')
 
 urlValue = "https://www.geld.de/"
