@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/home/vingleshwar/Documents/VikramIngleshwar/PerformanceTesting/timings-demo/py/Docker-Jenkins/</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd /home/vingleshwar/Documents/VikramIngleshwar/PerformanceTesting/timings-docker
+echo &quot;changed directory&quot;
+cd /home/vingleshwar/Documents/VikramIngleshwar/PerformanceTesting/timings-demo/py/Docker-Jenkins/
+
+pip install selenium
+pip install timingsclient
+pip install pyvirtualdisplay
+
+./job.sh 20</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
