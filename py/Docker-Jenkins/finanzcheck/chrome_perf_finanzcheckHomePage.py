@@ -18,7 +18,7 @@ from selenium.webdriver import ChromeOptions
 chromedriver = '/usr/local/bin/chromedriver'
 os.environ["webdriver.chrome.driver"] = chromedriver
 BROWSER = RemoteWebDriver(
-    command_executor='http://10.42.100.189:4444/wd/hub',
+    command_executor='http://0.0.0.0:4444/wd/hub',
     desired_capabilities=DesiredCapabilities.CHROME)
 
 urlValue = "https://www.finanzcheck.de/"
