@@ -1,3 +1,4 @@
+#https://github.com/godaddy/timings/blob/master/README.md#common-parameters-navtiming-usertiming-and-apitiming
 PERF_API_URL: "http://localhost/v2/api/cicd/"
 api_params: 
  sla: 
