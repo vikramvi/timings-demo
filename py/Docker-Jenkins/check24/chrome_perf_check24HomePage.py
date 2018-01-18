@@ -33,6 +33,8 @@ except:
 
 # Setup custom config for PERF
 CONFIG_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)),'', 'config_check24HomePage.yaml')
+print('CONFIG_FILE  ' + CONFIG_FILE ) 
+
 PERF = Perf(CONFIG_FILE)
 INJECT_CODE = PERF.injectjs('navtiming')
 
@@ -49,5 +51,11 @@ if INJECT_CODE is not False:
             str(NAV_RESP['export']['perf']['measured']),
             '/ ' + str(NAV_RESP['export']['perf']['threshold'])
         )
+    else:
+         print(str(NAV_RESP) + 'NAV_RESP')
+else:
+     print(str(INJECT_CODE) + 'INJECT_CODE')
 
 BROWSER.close()
+
+
