@@ -11,6 +11,6 @@ try:
     BROWSER.find_element_by_class_name('section__heading')
     print("FUNCTIONAL: Page looks good!")
 except:
-    print("FUNCTIONAL: Page sucks!")
+    print("FUNCTIONAL: Page working!")
 
 BROWSER.close()

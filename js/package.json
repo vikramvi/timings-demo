@@ -19,7 +19,7 @@
         "chai-http": "^2.0.1",
         "gulp": "^3.9.1",
         "mocha": "^2.5.3",
-        "timings-client-js": "^1.0.0",
+        "timings-client-js": "^1.0.10",
         "wdio-mocha-framework": "^0.5.11",
         "wdio-selenium-standalone-service": "0.0.9",
         "webdriverio": "^4.8.0"

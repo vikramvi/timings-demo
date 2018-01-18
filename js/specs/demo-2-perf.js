@@ -1,31 +1,38 @@
 //”./js/specs/demo-2-perf.js”
-const perf = require('timings-client-js');
+const timings = require('timings-client-js');
+const perf = new timings.PUtils('.perfconfig.js');
 
-describe('Demo timings-client-js', function() {
+describe('Demo timings-client', function() {
     it('page performance should be within SLA', function() {
         const perf_params = perf.getApiParams({sla:{pageLoadTime: 3000}, debug: true});
-        return perf.getInjectJS('navtiming', 'visual_complete')
+        return perf.getInjectJS('navtiming', 'visual_complete', true)
             .then((response) => {
-                console.log('getInjectJS: ' + JSON.stringify(response.data));
-                injectCode = response.data.inject_code;
-                return browser
-                    .url('http://seleniumhq.org/')
-                    .isVisible('#header')
-                    .execute('window.performance.mark("visual_complete");')
-                    .execute(decodeURIComponent(injectCode))
-                    .then((response) => {
-                        // Grab the browser's response - has the performance data!
-                        // console.log('timing: ' + JSON.stringify(response));
-                        console.log('params: ' + JSON.stringify(perf_params));
-                        var injectResponse = response.value;
-                        return perf.navtiming(injectResponse, perf_params)
+                if (response && response.data && response.data.inject_code) {
+                    inject_code = response.data.inject_code || '';
+                    // console.log("Encoded INJECT code: " + JSON.stringify(inject_code, null, 4));
+                    return browser
+                        .url('http://seleniumhq.org/test?strip_this')
+                        .isVisible('#header')
+                        .execute('window.performance.mark("visual_complete");')
+                        .execute(decodeURIComponent(inject_code))
                         .then((response) => {
-                                // Grab the API's response - has the assert field!
-                                console.log('navtiming: ' + JSON.stringify(response.data));
-                                var apiResponse = response.data;
-                                expect(apiResponse.assert).to.be.true;
-                            });
-                    })
+                            // Grab the browser's response - has the performance data!
+                            if (response.value) {
+                                const browser_response = response.value || {};
+                                // console.log("BROWSER response: " + JSON.stringify(browser_response, null, 4));
+                                return perf.navtiming(browser_response, perf_params, null)
+                                .then((response) => {
+                                        // Grab the API's response - has the assert field!
+                                        if (response && response.data) {
+                                            console.log("PERF-API response: " + JSON.stringify(response.data, null, 4));
+                                            expect(response.data.assert, 'Performance failed! assert field is False').to.be.true;
+                                        } else {
+                                            console.log("API error: " + JSON.stringify(response, null, 4));
+                                        }
+                                    });
+                            }
+                        })
+                }
             });
     });
 });

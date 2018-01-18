@@ -12,21 +12,22 @@ from selenium.webdriver.support import expected_conditions as EC
 from timingsclient import Perf
 
 # Setup custom config
-CONFIG_FILE = os.path.join(
-    os.path.abspath(os.path.dirname(__file__)), '', 'config.yaml')
+CONFIG_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)), '', 'config.yaml')
 
+# Initiate the client
 PERF = Perf(CONFIG_FILE)
 
-# Get inject code from the perf API
+# Get/Set parameters for the navtiming call
 API_PARAMS = PERF.getapiparams(
     days=15,
-    es_create=True,
+    es_trace=True,
     log=dict(something="crazy"))
 
-INJECT_CODE = PERF.injectjs('navtiming', 'visual_complete')
+# Get inject code from the perf API
+INJECT_CODE = PERF.injectjs('navtiming', 'visual_complete', True)
 
 # # Setup Selenium webdriver
-BROWSER = webdriver.Chrome("/Users/mverkerk/selenium/chromedriver.exe")
+BROWSER = webdriver.Chrome("/Users/mverkerk/selenium/chromedriver_2.34.exe")
 WAIT = WebDriverWait(BROWSER, 10)
 BROWSER.implicitly_wait(10)
 
@@ -36,8 +37,7 @@ START = datetime.datetime.now()
 
 # Get web page, sleep for 5 seconds and close BROWSER
 BROWSER.get('http://seleniumconf.de/')
-ELEMENT = WAIT.until(EC.presence_of_element_located((
-    By.CLASS_NAME, 'hero')))
+ELEMENT = WAIT.until(EC.presence_of_element_located((By.CLASS_NAME, 'hero')))
 
 print('{0} - Browser onload complete ...'.format(
     str((datetime.datetime.now() - START).total_seconds())

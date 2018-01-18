@@ -8,8 +8,7 @@ To install, you can clone the repo using `git clone` and install JavaScript depe
 $ git clone https://github.com/Verkurkie/timings-demo.git
 $ cd {rootFolder}/js
 $ npm i
-```
-```bash
+$ cd ..
 $ pip install timingsclient selenium
 ```
 
@@ -19,10 +18,10 @@ Before running tests, you have to configure the default parameters by editing th
 |-|-|-|
 |`PERF_API_URL`|Full URL of the API|`"http://my_api_server:3000/v2/api/cicd/"`|
 |`api_params.flags.esCreate`|Save results to ElasticSearch|`true`|
-|`api_params.log.test_info`|Save results to ElasticSearch|`My test`|
-|`api_params.log.env_tester`|Save results to ElasticSearch|`local`|
-|`api_params.log.browser`|Save results to ElasticSearch|`Chrome`|
-|`api_params.log.env_target`|Save results to ElasticSearch|`prod`|
+|`api_params.log.test_info`|Information about the test(-step)|`My test`|
+|`api_params.log.env_tester`|Environment of the test machine|`local`|
+|`api_params.log.browser`|Browser being used for the test|`Chrome`|
+|`api_params.log.env_target`|Environment of the target app/api|`prod`|
 |`api_params.log.team`|The name of your team/product|`MY_PRODUCT`|
 
 ## Running JavaScript tests (uses webdriverIO)

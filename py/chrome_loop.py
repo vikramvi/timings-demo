@@ -27,7 +27,7 @@ def run():
         BROWSER.find_element_by_class_name('section__heading')
         print("FUNCTIONAL: Page looks good!")
     except:
-        print("FUNCTIONAL: Page sucks!")
+        print("FUNCTIONAL: Page not working!")
 
     if INJECT_CODE is not False:
         TIMING = BROWSER.execute_script(INJECT_CODE)

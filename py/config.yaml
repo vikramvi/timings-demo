@@ -1,21 +1,23 @@
-#https://github.com/godaddy/timings/blob/master/README.md#common-parameters-navtiming-usertiming-and-apitiming
-PERF_API_URL: "http://localhost/v2/api/cicd/"
-api_params: 
- sla: 
-  pageLoadTime: 4000
- baseline: 
-  days: 7
-  perc: 75
-  padding: 1.2
- flags: 
-  assertBaseline: true
-  debug: false
-  esTrace: false
-  esCreate: true
-  passOnFailedAssert: false
- log: 
-  test_info: "Demo SeleniumConf17"
-  env_tester: "Windows"
-  browser: "Demo browser"
-  env_target: "PROD"
-  team: "SELENIUM TEAM"
+PERF_API_URL: "http://timings-api.int.godaddy.com/v2/api/cicd/"    # the full fqdn of the API server
+api_timeout: 5               # timeout for the API in seconds (valid range: 2-30 seconds)
+api_params:                  # the "api parameters" that will be send to the API in the POST body
+ sla:                           # This is the "flat SLA" - valid keys are "pageLoadTime" or "visualCompleteTime"
+  pageLoadTime: 4000                # Flat maximum threshold - this will be used if baseline (+ padding) is greater or flags.assertBaseline=false!
+ baseline:                      # These settings will be used by the API to calculate the baseline
+  days: 7                           # Number of days to calculate the baseline for
+  perc: 75                          # Percentile to calculate
+  padding: 1.2                      # Extra padding on top of the calculated baseline (gives some wiggle-room)
+  incl:
+    browser: "_log_"                # Filter the baseline based on the corresponding value in the log object
+ flags:                         # These booleans will tell the API what to do
+  assertBaseline: true              # Whether or not to compare against baseline
+  debug: false                      # Request extra debug info from the API
+  esTrace: false                    # Request elasticsearch output from API
+  esCreate: false                   # Save results to elasticsearch
+  passOnFailedAssert: false         # Pass the test, even when the performance is above the threshold
+ log:                           # These key-value pairs will be stored in elasticsearch and can be used to slice & dice the data in Kibana
+  app_info: "Demo test"             # Info about the test(-step)
+  platform: "Windows"               # Environment of the test machine (local, saucelabs, selenium grid, etc.)
+  browser: "Demo browser"           # Browser used to run the test with
+  environment: "PROD"               # Environment of the target app (usually dev, test, or prod)
+  team: "DEMO TEAM"                 # THe name of the (test-)team 
