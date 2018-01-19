@@ -36,6 +36,10 @@ CONFIG_FILE = os.path.join(os.path.abspath(os.path.dirname(__file__)),'', 'confi
 print('CONFIG_FILE  ' + CONFIG_FILE ) 
 
 PERF = Perf(CONFIG_FILE)
+
+# READ Using the API without clients
+# READ [POST] /v2/api/cicd/injectjs
+# READ [POST] /v2/api/cicd/navtiming
 INJECT_CODE = PERF.injectjs('navtiming')
 
 API_PARAMS = PERF.getapiparams(es_create=True, log={'browser': BROWSER.name, 'env_tester': platform.system()})
