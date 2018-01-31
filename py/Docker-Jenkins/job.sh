@@ -40,6 +40,9 @@ do
     python smava/chrome_perf_smavaZugangsdaten.py
     sleep 1
 
+    echo "Mobilede Smava Integration Page"
+    python smava/chrome_perf_mobiledeSmava.py
+    
 
     echo "check24 Home Page"
     python check24/chrome_perf_check24HomePage.py
