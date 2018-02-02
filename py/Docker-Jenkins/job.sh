@@ -42,8 +42,10 @@ do
 
     echo "Mobilede Smava Integration Page"
     python smava/chrome_perf_mobiledeSmava.py
-    
 
+    echo "Smava Kfzrechner Page"
+    python smava/chrome_perf_smavaKfzrechner.py
+    
     echo "check24 Home Page"
     python check24/chrome_perf_check24HomePage.py
     
