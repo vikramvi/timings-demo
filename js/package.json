@@ -1,9 +1,10 @@
 {
     "name": "timings-demo",
     "description": "Demo files for timings API demos and presentations",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "scripts": {
-        "test": "mocha"
+        "test": "./node_modules/.bin/wdio wdio.conf.js  --suite perf",
+        "lint": "eslint --ext .js ."
     },
     "repository": {
         "type": "git",
@@ -12,16 +13,18 @@
     "author": "Marcel Verkerk",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.16.1"
+        "axios": "^0.12.0",
+        "chai": "*",
+        "mocha": "*",
+        "wdio-mocha-framework": "^0.3.10",
+        "timings-client-js": "^1.0.10",
+        "wdio-selenium-standalone-service": "^0.0.9",
+        "webdriverio": "^4.8.0"
     },
     "devDependencies": {
-        "chai": "^3.5.0",
-        "chai-http": "^2.0.1",
-        "gulp": "^3.9.1",
-        "mocha": "^2.5.3",
-        "timings-client-js": "^1.0.10",
-        "wdio-mocha-framework": "^0.5.11",
-        "wdio-selenium-standalone-service": "0.0.9",
-        "webdriverio": "^4.8.0"
+        "eslint": "3.19.0",
+        "eslint-plugin-import": "^2.3.0",
+        "eslint-plugin-json": "^1.2.0",
+        "eslint-plugin-mocha": "^4.10.1"
     }
 }
