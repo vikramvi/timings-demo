@@ -1,5 +1,7 @@
 import os
 import platform
+import sys
+
 from selenium import webdriver
 from timingsclient import Perf
 
@@ -18,7 +20,7 @@ from selenium.webdriver import ChromeOptions
 chromedriver = '/usr/local/bin/chromedriver'
 os.environ["webdriver.chrome.driver"] = chromedriver
 BROWSER = RemoteWebDriver(
-    command_executor='http://0.0.0.0:4444/wd/hub',
+    command_executor= sys.argv[1] +'/wd/hub',
     desired_capabilities=DesiredCapabilities.CHROME)
 
 urlValue = "https://angebot.smava.de/?placementId=1847502766&ref=9875f8f0&leadId=07c9c5c6-1463-40db-9932-d2c269657593&adId=212073853"
