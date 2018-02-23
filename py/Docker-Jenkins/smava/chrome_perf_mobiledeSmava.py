@@ -11,7 +11,7 @@ from selenium.webdriver import ChromeOptions
 
 #Jenkins Chrome Browser Fix
 #from pyvirtualdisplay import Display
-#display = Display(visible=0, size=(800, 800))  
+#display = Display(visible=0, size=(800, 800))
 #display.start()
 #BROWSER = webdriver.Chrome()
 
@@ -23,7 +23,7 @@ BROWSER = RemoteWebDriver(
     command_executor= sys.argv[1] +'/wd/hub',
     desired_capabilities=DesiredCapabilities.CHROME)
 
-urlValue = "https://angebot.smava.de/?placementId=1847502766&ref=9875f8f0&leadId=07c9c5c6-1463-40db-9932-d2c269657593&adId=212073853"
+urlValue = "https://angebot.smava.de/?placementId=1847502766&ref=9875f8f0&leadId=1b264eda-2ad1-4779-aa5f-3011765d77f5&adId=212073853"
 BROWSER.get(urlValue)
 
 
